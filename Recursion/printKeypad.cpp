@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "solution.h"
 
 using namespace std;
 
@@ -27,4 +28,14 @@ void printKeypad(int num)
     string s;
     
     helpPrint(num, s);
+}
+
+int main()
+{
+    int num;
+    cin >> num;
+
+    printKeypad(num);
+
+    return 0;
 }
