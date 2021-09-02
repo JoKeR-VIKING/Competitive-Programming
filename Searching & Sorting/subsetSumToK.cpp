@@ -40,7 +40,7 @@ int main()
         if (k == 0)
             cout<<pow(2, count(arr, arr+n, 0))<<"\n";
         else
-        	cout<<subsetSumToK(arr, n, k, {})<<"\n";
+            cout<<subsetSumToK(arr, n, k, {})<<"\n";
     }
     
     return 0;
