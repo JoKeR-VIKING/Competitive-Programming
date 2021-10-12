@@ -30,6 +30,8 @@
 // 1 -> 4 -> 1 -> 3 -> 1: 10
 // This is marked and shown in the following image: 
 
+![alt text](https://files.codingninjas.in/1716-image-8325.jpg)
+
 #include<bits/stdc++.h>
 
 using namespace std;
