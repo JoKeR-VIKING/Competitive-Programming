@@ -96,4 +96,79 @@ int main()
     return 0;
 }
 
-// DP approach
+// O(n^3) approach
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int kadanesAlgo(vector<int>& subSum)
+{
+    int currentBest = subSum[0], overallBest = subSum[0];
+    
+    for (int i=1;i<subSum.size();i++)
+    {
+        if (currentBest + subSum[i] > subSum[i])
+            currentBest += subSum[i];
+        else
+            currentBest = subSum[i];
+        
+        overallBest = max(currentBest, overallBest);
+    }
+    
+    return overallBest;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    
+    while (t--)
+    {
+        int n, m;
+        cin>>n>>m;
+        
+        int** arr = new int*[n];
+        
+        for (int i=0;i<n;i++)
+        {
+            arr[i] = new int[m];
+            
+            for (int j=0;j<m;j++)
+                cin>>arr[i][j];
+        }
+        
+        for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<m;j++)
+            {
+                arr[i][j] += arr[i][j-1];
+            }
+        }
+        
+        int maxSum = INT_MIN;
+        
+        for (int i=0;i<m;i++)
+        {
+            for (int j=i;j<m;j++)
+            {
+                vector<int> subSum;
+                
+                for (int k=0;k<n;k++)
+                {
+                    if (i == 0)
+                    	subSum.push_back(arr[k][j]);
+                    else
+                        subSum.push_back(arr[k][j] - arr[k][i-1]);
+                }
+                
+                maxSum = max(maxSum, kadanesAlgo(subSum));
+            }
+        }
+        
+        cout<<maxSum<<"\n";
+    }
+    
+    return 0;
+}
